@@ -85,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // get data
                 String nama = edtNama.getText().toString();
-                String nim = edtNim.getText().toString();
+                String nim = edtNama.getText().toString();
+                //String nim = String.valueOf(edtNim.getText());
                 String dateBirth = edtTanggalLahir.getText().toString();
                 String jk;
                 if (rb_laki.isSelected()) {
