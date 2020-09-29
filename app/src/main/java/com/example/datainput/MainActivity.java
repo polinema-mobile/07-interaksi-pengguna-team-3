@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -78,5 +79,20 @@ public class MainActivity extends AppCompatActivity {
                 picker.show();
             }
         });
+
+        Simpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // get data
+                String nama = edtNama.getText().toString();
+                String nim = String.valueOf(edtNim.getText());
+
+                Intent intent = new Intent(MainActivity.this, ShowData.class);
+                intent.putExtra("Nama", nama);
+                intent.putExtra("Nim  ", nim);
+                startActivity(intent);
+            }
+        });
+
     }
 }
