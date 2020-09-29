@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -76,6 +77,25 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }, year, month, day);
                 picker.show();
+            }
+        });
+        Simpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nama = edtNama.getText().toString();
+                String jk;
+                if (rb_laki.isChecked()) {
+                    jk = "Pria";
+                } else {
+                    jk = "Wanita";
+                }
+
+                Intent myIntent = new Intent(MainActivity.this, android.example.datainput.ResultActivity.class);
+                Bundle paket = new Bundle();
+                paket.putString("nama", nama);
+                paket.putString("jenkel", jk);
+                myIntent.putExtras(paket);
+                startActivity(myIntent);
             }
         });
     }
