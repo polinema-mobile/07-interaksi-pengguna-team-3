@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         edtNama = (EditText)findViewById(R.id.edtNama);
         edtNim = (EditText)findViewById(R.id.edtNim);
         edtTanggalLahir = (EditText)findViewById(R.id.edtTanggalLahir);
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerJurusan = (Spinner)findViewById(R.id.spinnerJurusan);
         Simpan = (Button) findViewById(R.id.Simpan);
 
-        //Data Spinner
         List<String> ListJurusan = new ArrayList<String>();
         ListJurusan.add("AKUNTANSI");
         ListJurusan.add("TEKNIK INFORMATIKA");
@@ -58,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerJurusan.setAdapter(adapter);
 
-        //Datepicker
         edtTanggalLahir=(EditText) findViewById(R.id.edtTanggalLahir);
         edtTanggalLahir.setInputType(InputType.TYPE_NULL);
         edtTanggalLahir.setOnClickListener(new View.OnClickListener() {
@@ -78,20 +76,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }, year, month, day);
                 picker.show();
-            }
-        });
-
-        Simpan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // get data
-                String nama = edtNama.getText().toString();
-                String nim = edtNim.getText().toString();
-
-                Intent intent = new Intent(MainActivity.this, ShowData.class);
-                intent.putExtra("Nama", nama);
-                intent.putExtra("Nim  ", nim);
-                startActivity(intent);
             }
         });
     }
