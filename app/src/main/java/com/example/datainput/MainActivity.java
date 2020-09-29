@@ -85,11 +85,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // get data
                 String nama = edtNama.getText().toString();
-                String nim = String.valueOf(edtNim.getText());
+                String nim = edtNim.getText().toString();
+                String dateBirth = edtTanggalLahir.getText().toString();
+                String jk;
+                if (rb_laki.isSelected()) {
+                    jk = "Pria";
+                } else {
+                    jk = "Wanita";
+                }
+                String jurusan = spinnerJurusan.getSelectedItem().toString();
 
                 Intent intent = new Intent(MainActivity.this, ShowData.class);
+                Bundle paket = new Bundle();
                 intent.putExtra("Nama", nama);
-                intent.putExtra("Nim  ", nim);
+                intent.putExtra("Nim", nim);
+                intent.putExtra("Tanggal_Lahir", dateBirth);
+                intent.putExtra("jenis_kelamin", jk);
+                intent.putExtra("jurusan", jurusan);
+                intent.putExtras(paket);
                 startActivity(intent);
             }
         });
