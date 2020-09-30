@@ -20,7 +20,8 @@
             android:id="@+id/edtNim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nomor Induk Mahasiswa"/>
+            android:hint="Nomor Induk Mahasiswa"
+            android:inputType="number"/>
 
         <EditText
             android:id="@+id/edtTanggalLahir"

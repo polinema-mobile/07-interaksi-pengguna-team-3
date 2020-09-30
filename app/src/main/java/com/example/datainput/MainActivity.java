@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText edtNama,edtNim,edtTanggalLahir;
     RadioGroup rg_jeniskelamin;
-    RadioButton rb_laki, rb_perempuan;
+    RadioButton rdBtn;
     Spinner spinnerJurusan;
     Button Simpan;
     DatePickerDialog picker;
@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
         edtNim = (EditText)findViewById(R.id.edtNim);
         edtTanggalLahir = (EditText)findViewById(R.id.edtTanggalLahir);
         rg_jeniskelamin = (RadioGroup)findViewById(R.id.rg_jeniskelamin);
-        rb_laki = (RadioButton) findViewById(R.id.rb_laki);
-        rb_perempuan = (RadioButton) findViewById(R.id.rb_perempuan);
         spinnerJurusan = (Spinner)findViewById(R.id.spinnerJurusan);
         Simpan = (Button) findViewById(R.id.Simpan);
 
@@ -85,23 +83,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // get data
                 String nama = edtNama.getText().toString();
-                String nim = edtNama.getText().toString();
-                //String nim = String.valueOf(edtNim.getText());
+                String nim = edtNim.getText().toString();
                 String dateBirth = edtTanggalLahir.getText().toString();
-                String jk;
-                if (rb_laki.isSelected()) {
-                    jk = "Pria";
-                } else {
-                    jk = "Wanita";
-                }
                 String jurusan = spinnerJurusan.getSelectedItem().toString();
+                int radiogrp = rg_jeniskelamin.getCheckedRadioButtonId();
+                rdBtn = (RadioButton)findViewById(radiogrp);
+                String gender = rdBtn.getText().toString();
 
                 Intent intent = new Intent(MainActivity.this, ShowData.class);
                 Bundle paket = new Bundle();
+
                 intent.putExtra("Nama", nama);
                 intent.putExtra("Nim", nim);
                 intent.putExtra("Tanggal_Lahir", dateBirth);
-                intent.putExtra("jenis_kelamin", jk);
+                intent.putExtra("jenis_kelamin", gender);
                 intent.putExtra("jurusan", jurusan);
                 intent.putExtras(paket);
                 startActivity(intent);
