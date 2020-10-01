@@ -82,30 +82,29 @@ public class MainActivity extends AppCompatActivity {
                 picker.show();
             }
         });
-
+        //Parcelable
         Simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Parceleble
                 Intent intent = new Intent(MainActivity.this, ShowData.class);
                 intent.putExtra(ShowData.EXTRA_DATA, myParcelable);
                 startActivity(intent);
-
-                /*
+            }
+        });
+        /*
+        Simpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 // get data
                 String nama = edtNama.getText().toString();
                 String nim = edtNim.getText().toString();
                 String dateBirth = edtTanggalLahir.getText().toString();
-                int selectedRbId = rg_jeniskelamin.getCheckedRadioButtonId();
-                selectedRb = (RadioButton) findViewById(selectedRbId);
-                String jk = selectedRb.getText().toString();
-
+                String jk;
                 if (rb_laki.isSelected()) {
                     jk = "Pria";
                 } else {
                     jk = "Wanita";
                 }
-
                 String jurusan = spinnerJurusan.getSelectedItem().toString();
 
                 Intent intent = new Intent(MainActivity.this, ShowData.class);
@@ -117,10 +116,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("jurusan", jurusan);
                 intent.putExtras(paket);
                 startActivity(intent);
-
-                 */
             }
-        });
+        });*/
 
     }
     private MyParcelable createNewMyParcelable() {

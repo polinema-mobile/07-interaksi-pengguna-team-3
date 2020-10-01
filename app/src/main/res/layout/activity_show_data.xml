@@ -79,6 +79,7 @@
             android:text="ini akan di isi oleh jurusan"
             android:layout_marginBottom="5dp"/>
 
+
     </LinearLayout>
 
 </RelativeLayout>
