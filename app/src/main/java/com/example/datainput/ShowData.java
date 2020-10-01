@@ -19,15 +19,7 @@ public class ShowData extends AppCompatActivity {
         OutputJenisKelamin = (TextView) findViewById(R.id.outputJenisKelamin);
         OutputJurusan = (TextView) findViewById(R.id.outputJurusan);
 
-        //Parcelable
-        MyParcelable myParcelable= getIntent().getParcelableExtra(EXTRA_DATA);
-        OutputNama.setText(myParcelable.getNama());
-        OutputNim.setText(myParcelable.getNim());
-        OutputTglLahir.setText(myParcelable.getTgllahir());
-        OutputJenisKelamin.setText(myParcelable.getJenisKelamin());
-        OutputJurusan.setText(myParcelable.getJurusan());
-
-        /*Intent intent = getIntent();
+        Intent intent = getIntent();
         Bundle bukaPaket = intent.getExtras();
         String nama = bukaPaket.getString("Nama");
         String nim = bukaPaket.getString("Nim");
@@ -40,7 +32,6 @@ public class ShowData extends AppCompatActivity {
         OutputTglLahir.setText(dateBirth);
         OutputJenisKelamin.setText(jk);
         OutputJurusan.setText(jurusan);
-        
-         */
+
     }
 }

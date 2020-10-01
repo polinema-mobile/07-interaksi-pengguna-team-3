@@ -54,12 +54,23 @@
             android:id="@+id/spinnerJurusan"
             android:layout_width="match_parent"
             android:layout_height="70dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/Simpan"
-            android:text="SIMPAN DATA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/Simpan"
+                android:text="SIMPAN DATA INTENT"
+                android:layout_width="205.7dp"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:id="@+id/SimpanParcel"
+                android:layout_width="205.7dp"
+                android:layout_height="match_parent"
+                android:text="SIMPAN DATA PARCELABLE" />
+        </LinearLayout>
 
     </LinearLayout>
+
 </RelativeLayout>

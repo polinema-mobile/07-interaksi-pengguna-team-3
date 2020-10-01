@@ -1,13 +1,14 @@
 package com.example.datainput;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class MyParcelable implements Parcelable {
-    private String nama;
-    private String nim;
-    private String tgllahir;
-    private String jeniskelamin;
-    private String jurusan;
+    String nama;
+    String nim;
+    String tgllahir;
+    String jeniskelamin;
+    String jurusan;
 
     public String getNama() {
         return nama;
@@ -33,7 +34,7 @@ public class MyParcelable implements Parcelable {
         this.tgllahir = tgllahir;
     }
 
-    public String getJenisKelamin() {
+    public String getJeniskelamin() {
         return jeniskelamin;
     }
 
@@ -49,9 +50,6 @@ public class MyParcelable implements Parcelable {
         this.jurusan = jurusan;
     }
 
-    public MyParcelable(){
-
-    }
 
     @Override
     public int describeContents() {
@@ -67,7 +65,7 @@ public class MyParcelable implements Parcelable {
         dest.writeString(this.jurusan);
     }
 
-    protected MyParcelable(Parcel in) {
+    public MyParcelable(Parcel in) {
         this.nama = in.readString();
         this.nim = in.readString();
         this.tgllahir = in.readString();

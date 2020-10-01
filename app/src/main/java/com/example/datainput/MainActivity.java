@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Adapter;
@@ -26,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
     EditText edtNama,edtNim,edtTanggalLahir;
     RadioGroup rg_jeniskelamin;
-    RadioButton selectedRb;
     Spinner spinnerJurusan;
-    Button Simpan;
+    Button Simpan,SimpanParcel;
     DatePickerDialog picker;
+    RadioButton rdBtn;
     MyParcelable myParcelable;
 
     @SuppressLint("WrongViewCast")
@@ -43,12 +44,9 @@ public class MainActivity extends AppCompatActivity {
         edtNim = (EditText)findViewById(R.id.edtNim);
         edtTanggalLahir = (EditText)findViewById(R.id.edtTanggalLahir);
         rg_jeniskelamin = (RadioGroup)findViewById(R.id.rg_jeniskelamin);
-        //selectedRb = (RadioButton) findViewById(R.id.rb_laki);
-        //rb_perempuan = (RadioButton) findViewById(R.id.rb_perempuan);
         spinnerJurusan = (Spinner)findViewById(R.id.spinnerJurusan);
         Simpan = (Button) findViewById(R.id.Simpan);
-
-        myParcelable = createNewMyParcelable();
+        SimpanParcel = (Button) findViewById(R.id.SimpanParcel);
 
         List<String> ListJurusan = new ArrayList<String>();
         ListJurusan.add("AKUNTANSI");
@@ -82,16 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 picker.show();
             }
         });
-        //Parcelable
-        Simpan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ShowData.class);
-                intent.putExtra(ShowData.EXTRA_DATA, myParcelable);
-                startActivity(intent);
-            }
-        });
-        /*
+
         Simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,36 +88,35 @@ public class MainActivity extends AppCompatActivity {
                 String nama = edtNama.getText().toString();
                 String nim = edtNim.getText().toString();
                 String dateBirth = edtTanggalLahir.getText().toString();
-                String jk;
-                if (rb_laki.isSelected()) {
-                    jk = "Pria";
-                } else {
-                    jk = "Wanita";
-                }
                 String jurusan = spinnerJurusan.getSelectedItem().toString();
+                int radiogrp = rg_jeniskelamin.getCheckedRadioButtonId();
+                rdBtn = (RadioButton)findViewById(radiogrp);
+                String gender = rdBtn.getText().toString();
 
                 Intent intent = new Intent(MainActivity.this, ShowData.class);
                 Bundle paket = new Bundle();
+
                 intent.putExtra("Nama", nama);
                 intent.putExtra("Nim", nim);
                 intent.putExtra("Tanggal_Lahir", dateBirth);
-                intent.putExtra("jenis_kelamin", jk);
+                intent.putExtra("jenis_kelamin", gender);
                 intent.putExtra("jurusan", jurusan);
                 intent.putExtras(paket);
                 startActivity(intent);
             }
-        });*/
+        });
 
-    }
-    private MyParcelable createNewMyParcelable() {
-        int selectedRbId = rg_jeniskelamin.getCheckedRadioButtonId();
-        selectedRb = (RadioButton) findViewById(selectedRbId);
-        MyParcelable myParcelableBaru = new MyParcelable();
-        myParcelableBaru.setNama(edtNama.getText().toString());
-        myParcelableBaru.setNim(edtNim.getText().toString());
-        myParcelableBaru.setTgllahir(edtTanggalLahir.getText().toString());
-        myParcelableBaru.setJenisKelamin(selectedRb.getText().toString());
-        myParcelableBaru.setJurusan(spinnerJurusan.getSelectedItem().toString());
-        return myParcelableBaru;
+        SimpanParcel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int radiogrp = rg_jeniskelamin.getCheckedRadioButtonId();
+                rdBtn = (RadioButton)findViewById(radiogrp);
+
+                //MyParcelable myParcelable = new MyParcelable(edtNama.getText().toString(), edtNim.getText().toString(), edtTanggalLahir.getText().toString(), rdBtn.getText().toString(), spinnerJurusan.getSelectedItem().toString());
+                Intent intent = new Intent(MainActivity.this,ShowData.class);
+                intent.putExtra("My Parcelable", myParcelable);
+                startActivity(intent);
+            }
+        });
     }
 }

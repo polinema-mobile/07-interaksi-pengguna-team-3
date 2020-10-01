@@ -25,10 +25,10 @@
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/outputNama"
-            android:text="ini akan di isi oleh nama"
+            android:text="Nama"
             android:layout_marginBottom="5dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -37,10 +37,10 @@
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/outputNim"
-            android:text="ini akan di isi oleh tanggal lahir"
+            android:text="Nim"
             android:layout_marginBottom="5dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -49,10 +49,10 @@
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/outputTglLahir"
-            android:text="ini akan di isi oleh nama"
+            android:text="Tanggal Lahir"
             android:layout_marginBottom="5dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -61,10 +61,10 @@
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/outputJenisKelamin"
-            android:text="ini akan di isi oleh jenis kelamin"
+            android:text="Jenis Kelamin"
             android:layout_marginBottom="5dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -73,13 +73,11 @@
             android:textStyle="bold"
             android:layout_marginBottom="5dp"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/outputJurusan"
-            android:text="ini akan di isi oleh jurusan"
+            android:text="Jurusan"
             android:layout_marginBottom="5dp"/>
-
-
     </LinearLayout>
 
 </RelativeLayout>
