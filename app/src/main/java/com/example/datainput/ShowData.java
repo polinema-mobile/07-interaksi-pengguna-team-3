@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class ShowData extends AppCompatActivity {
+    public static final String EXTRA_DATA = "extra_data";
     TextView OutputNama, OutputJenisKelamin, OutputNim, OutputTglLahir, OutputJurusan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,15 @@ public class ShowData extends AppCompatActivity {
         OutputJenisKelamin = (TextView) findViewById(R.id.outputJenisKelamin);
         OutputJurusan = (TextView) findViewById(R.id.outputJurusan);
 
-        Intent intent = getIntent();
+        //Parcelable
+        MyParcelable myParcelable= getIntent().getParcelableExtra(EXTRA_DATA);
+        OutputNama.setText(myParcelable.getNama());
+        OutputNim.setText(myParcelable.getNim());
+        OutputTglLahir.setText(myParcelable.getTgllahir());
+        OutputJenisKelamin.setText(myParcelable.getJenisKelamin());
+        OutputJurusan.setText(myParcelable.getJurusan());
+
+        /*Intent intent = getIntent();
         Bundle bukaPaket = intent.getExtras();
         String nama = bukaPaket.getString("Nama");
         String nim = bukaPaket.getString("Nim");
@@ -31,5 +40,7 @@ public class ShowData extends AppCompatActivity {
         OutputTglLahir.setText(dateBirth);
         OutputJenisKelamin.setText(jk);
         OutputJurusan.setText(jurusan);
+        
+         */
     }
 }

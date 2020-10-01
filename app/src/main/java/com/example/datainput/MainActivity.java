@@ -26,10 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
     EditText edtNama,edtNim,edtTanggalLahir;
     RadioGroup rg_jeniskelamin;
-    RadioButton rb_laki, rb_perempuan;
+    RadioButton selectedRb;
     Spinner spinnerJurusan;
     Button Simpan;
     DatePickerDialog picker;
+    MyParcelable myParcelable;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -42,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
         edtNim = (EditText)findViewById(R.id.edtNim);
         edtTanggalLahir = (EditText)findViewById(R.id.edtTanggalLahir);
         rg_jeniskelamin = (RadioGroup)findViewById(R.id.rg_jeniskelamin);
-        rb_laki = (RadioButton) findViewById(R.id.rb_laki);
-        rb_perempuan = (RadioButton) findViewById(R.id.rb_perempuan);
+        //selectedRb = (RadioButton) findViewById(R.id.rb_laki);
+        //rb_perempuan = (RadioButton) findViewById(R.id.rb_perempuan);
         spinnerJurusan = (Spinner)findViewById(R.id.spinnerJurusan);
         Simpan = (Button) findViewById(R.id.Simpan);
+
+        myParcelable = createNewMyParcelable();
 
         List<String> ListJurusan = new ArrayList<String>();
         ListJurusan.add("AKUNTANSI");
@@ -83,16 +86,26 @@ public class MainActivity extends AppCompatActivity {
         Simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Parceleble
+                Intent intent = new Intent(MainActivity.this, ShowData.class);
+                intent.putExtra(ShowData.EXTRA_DATA, myParcelable);
+                startActivity(intent);
+
+                /*
                 // get data
                 String nama = edtNama.getText().toString();
                 String nim = edtNim.getText().toString();
                 String dateBirth = edtTanggalLahir.getText().toString();
-                String jk;
+                int selectedRbId = rg_jeniskelamin.getCheckedRadioButtonId();
+                selectedRb = (RadioButton) findViewById(selectedRbId);
+                String jk = selectedRb.getText().toString();
+
                 if (rb_laki.isSelected()) {
                     jk = "Pria";
                 } else {
                     jk = "Wanita";
                 }
+
                 String jurusan = spinnerJurusan.getSelectedItem().toString();
 
                 Intent intent = new Intent(MainActivity.this, ShowData.class);
@@ -104,8 +117,21 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("jurusan", jurusan);
                 intent.putExtras(paket);
                 startActivity(intent);
+
+                 */
             }
         });
 
+    }
+    private MyParcelable createNewMyParcelable() {
+        int selectedRbId = rg_jeniskelamin.getCheckedRadioButtonId();
+        selectedRb = (RadioButton) findViewById(selectedRbId);
+        MyParcelable myParcelableBaru = new MyParcelable();
+        myParcelableBaru.setNama(edtNama.getText().toString());
+        myParcelableBaru.setNim(edtNim.getText().toString());
+        myParcelableBaru.setTgllahir(edtTanggalLahir.getText().toString());
+        myParcelableBaru.setJenisKelamin(selectedRb.getText().toString());
+        myParcelableBaru.setJurusan(spinnerJurusan.getSelectedItem().toString());
+        return myParcelableBaru;
     }
 }
