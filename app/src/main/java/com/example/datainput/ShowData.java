@@ -1,5 +1,6 @@
 package com.example.datainput;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,12 +8,15 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class ShowData extends AppCompatActivity {
-    public static final String EXTRA_DATA = "extra_data";
     TextView OutputNama, OutputJenisKelamin, OutputNim, OutputTglLahir, OutputJurusan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_data);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("GET DATA WITH INTENT");
+
         OutputNama = (TextView) findViewById(R.id.outputNama);
         OutputNim = (TextView) findViewById(R.id.outputNim);
         OutputTglLahir = (TextView) findViewById(R.id.outputTglLahir);
@@ -32,6 +36,5 @@ public class ShowData extends AppCompatActivity {
         OutputTglLahir.setText(dateBirth);
         OutputJenisKelamin.setText(jk);
         OutputJurusan.setText(jurusan);
-
     }
 }

@@ -1,5 +1,6 @@
 package com.example.datainput;
 
+import android.app.ActionBar;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,6 +10,25 @@ public class MyParcelable implements Parcelable {
     String tgllahir;
     String jeniskelamin;
     String jurusan;
+
+
+
+    protected MyParcelable(Parcel in) {
+        this.nama = in.readString();
+        this.nim = in.readString();
+        this.tgllahir = in.readString();
+        this.jeniskelamin = in.readString();
+        this.jurusan = in.readString();
+    }
+
+    public MyParcelable(String nama, String nim, String tgllahir, String jeniskelamin, String jurusan){
+        this.nama = nama;
+        this.nim = nim;
+        this.tgllahir = tgllahir;
+        this.jeniskelamin = jeniskelamin;
+        this.jurusan = jurusan;
+
+    }
 
     public String getNama() {
         return nama;
@@ -50,7 +70,6 @@ public class MyParcelable implements Parcelable {
         this.jurusan = jurusan;
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -63,14 +82,6 @@ public class MyParcelable implements Parcelable {
         dest.writeString(this.tgllahir);
         dest.writeString(this.jeniskelamin);
         dest.writeString(this.jurusan);
-    }
-
-    public MyParcelable(Parcel in) {
-        this.nama = in.readString();
-        this.nim = in.readString();
-        this.tgllahir = in.readString();
-        this.jeniskelamin = in.readString();
-        this.jurusan = in.readString();
     }
 
     public static final Creator<MyParcelable> CREATOR = new Creator<MyParcelable>() {

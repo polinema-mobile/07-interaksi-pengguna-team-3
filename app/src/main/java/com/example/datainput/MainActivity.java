@@ -112,9 +112,10 @@ public class MainActivity extends AppCompatActivity {
                 int radiogrp = rg_jeniskelamin.getCheckedRadioButtonId();
                 rdBtn = (RadioButton)findViewById(radiogrp);
 
-                //MyParcelable myParcelable = new MyParcelable(edtNama.getText().toString(), edtNim.getText().toString(), edtTanggalLahir.getText().toString(), rdBtn.getText().toString(), spinnerJurusan.getSelectedItem().toString());
-                Intent intent = new Intent(MainActivity.this,ShowData.class);
-                intent.putExtra("My Parcelable", myParcelable);
+                MyParcelable myParcelable = new MyParcelable(edtNama.getText().toString(),edtNim.getText().toString(),edtTanggalLahir.getText().toString(),rdBtn.getText().toString(),spinnerJurusan.getSelectedItem().toString());
+
+                Intent intent = new Intent(MainActivity.this, Detail_Parcelable.class);
+                intent.putExtra("MyParcelable", myParcelable);
                 startActivity(intent);
             }
         });
